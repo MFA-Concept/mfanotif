@@ -40,5 +40,11 @@ Citizen.CreateThread(function()
     end
 end)
 ```
+![SUCCES](https://media.discordapp.net/attachments/916446968497188905/943236084396073011/notif_succes.png)
 
+![warning](https://media.discordapp.net/attachments/916446968497188905/943237214219952158/notifwarning.png)
+
+![error](https://media.discordapp.net/attachments/916446968497188905/943236084639350844/notiferror.png)
+
+![help](https://media.discordapp.net/attachments/916446968497188905/943236100560941126/notifhelp.png)
 
