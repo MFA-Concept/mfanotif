@@ -15,9 +15,9 @@ AddEventHandler("esx:setJob",function(job)
     ESX.PlayerData.job = job
 end)
 
-RegisterNetEvent("esx:setOrga")
-AddEventHandler("esx:setOrga",function(orga)
-    ESX.PlayerData.orga = orga
+RegisterNetEvent("esx:setJob2")
+AddEventHandler("esx:setJob2",function(job2)
+    ESX.PlayerData.job2 = job2
 end)
 
 ---@param msg string define message od notification
@@ -98,9 +98,9 @@ Citizen.CreateThread(function()
         notifFind = false;
         for k,notif in pairs(helpsNotif) do
             if (notif.job ~= nil) then
-                if ESX.PlayerData and ESX.PlayerData.job.name == notif.job or ESX.PlayerData.orga.name == notif.job then
+                if ESX.PlayerData and ESX.PlayerData.job.name == notif.job or ESX.PlayerData.job2.name == notif.job then
                     if (notif.grade ~= nil) then
-                        if (notif.grade == ESX.PlayerData.job.grade_name or notif.grade == ESX.PlayerData.orga.grade_name) then
+                        if (notif.grade == ESX.PlayerData.job.grade_name or notif.grade == ESX.PlayerData.job2.grade_name) then
                             if #(notif.pos - pos) < notif.radius and not forceHideHelpNotif then
                                 mfaHelpNotif(notif.message);
                                 notifFind = true;
