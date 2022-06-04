@@ -36,7 +36,13 @@ local pos = {
 
 Citizen.CreateThread(function()
     for k,v in pairs(pos)do
-        exports.mfanotif:registerNotifForPos("Appuyer sur <span class='key'>E</span> accéder a l'armurerie",v,1)
+    exports.mfanotif:registerNotifForPos({
+        message =  "Appuyer sur <span class='key'>E</span> accéder au garage",
+        pos = v,
+        radius = 1,
+        job = "police",
+        grade = "recruit",
+    })
     end
 end)
 ```
