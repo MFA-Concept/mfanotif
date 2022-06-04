@@ -25,7 +25,13 @@ si vous souhaitez utiliser le type custom il vous suffit de faire
 
 pour utiliser la helpnotification il vous suffit de faire 
 
-`exports.mfanotif:registerNotifForPos("message",pos,mindist)`
+`    exports.mfanotif:registerNotifForPos({
+        message =  "Appuyer sur <span class='key'>E</span> accéder au garage",
+        pos = v,
+        radius = 1,
+        job = "police",
+        grade = "recruit",
+    })`
 
 ### Exemple 
 ```
