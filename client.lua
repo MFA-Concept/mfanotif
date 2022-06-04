@@ -3,6 +3,23 @@ local forceHideHelpNotif = false;
 local notifIsHide = false;
 local isSend = false
 
+
+
+RegisterNetEvent("esx:playerLoaded")
+AddEventHandler("esx:playerLoaded",function(xPlayer)
+    ESX.PlayerData = xPlayer
+end)
+
+RegisterNetEvent("esx:setJob")
+AddEventHandler("esx:setJob",function(job)
+    ESX.PlayerData.job = job
+end)
+
+RegisterNetEvent("esx:setOrga")
+AddEventHandler("esx:setOrga",function(orga)
+    ESX.PlayerData.orga = orga
+end)
+
 ---@param msg string define message od notification
 ---@param type string define type of notification
 ---@param icon table define Key value = icon key color = color
@@ -64,11 +81,13 @@ end
 ---@param message string define message for notif
 ---@param pos number define pos for notif
 ---@param radius number define min dist for notif
-function registerNotifForPos(message,pos,radius)
+function registerNotifForPos(data)
     table.insert(helpsNotif,{
-        message = message,
-        pos = pos,
-        radius = radius
+        message = data.message,
+        pos = data.pos,
+        radius = data.radius,
+        job = data.job or nil,
+        grade = data.grade or nil
     });
 end
 
@@ -78,10 +97,30 @@ Citizen.CreateThread(function()
         pos = GetEntityCoords(PlayerPedId());
         notifFind = false;
         for k,notif in pairs(helpsNotif) do
-            if #(notif.pos - pos) < notif.radius and not forceHideHelpNotif then
-                mfaHelpNotif(notif.message);
-                notifFind = true;
-                notifIsHide = false;
+            if (notif.job ~= nil) then
+                if ESX.PlayerData and ESX.PlayerData.job.name == notif.job or ESX.PlayerData.orga.name == notif.job then
+                    if (notif.grade ~= nil) then
+                        if (notif.grade == ESX.PlayerData.job.grade_name or notif.grade == ESX.PlayerData.orga.grade_name) then
+                            if #(notif.pos - pos) < notif.radius and not forceHideHelpNotif then
+                                mfaHelpNotif(notif.message);
+                                notifFind = true;
+                                notifIsHide = false;
+                            end
+                        end
+                    else
+                        if #(notif.pos - pos) < notif.radius and not forceHideHelpNotif then
+                            mfaHelpNotif(notif.message);
+                            notifFind = true;
+                            notifIsHide = false;
+                        end
+                    end
+                end
+            else
+                if #(notif.pos - pos) < notif.radius and not forceHideHelpNotif then
+                    mfaHelpNotif(notif.message);
+                    notifFind = true;
+                    notifIsHide = false;
+                end
             end
         end
         if not notifFind then

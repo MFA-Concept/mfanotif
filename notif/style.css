@@ -1,0 +1,130 @@
+*,::before,::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* SECTION NOTIF */
+
+
+.container-notif {
+    position: absolute;
+    height:min-content;
+    max-height: 60vh;
+    right: 10px;
+    top: 13rem;
+    width: 18.7rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 10px;
+
+}
+
+
+
+
+
+.notif {
+    position: relative;
+    min-height:4rem;
+    height: min-content;
+    right: -300px;
+    width: 100%;
+    background-color: #17191daa;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    -webkit-user-select: none;
+    
+}
+
+.notif .progress {
+    
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #f1f1f1;
+    border-radius: 6px;
+   
+}
+
+.notif.active .progress {
+    width: 100%;
+}
+
+.notif i {
+    font-size: 24px;
+}
+
+
+.content-txt {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+.notif p {
+    font-size: 15px;
+    word-wrap: break-word;
+    color: white;
+    font-family: "helvetica";
+}
+
+
+/* SECTION HELPNOTIF */
+
+.container-help {
+    position: absolute;
+    height: 40px;
+    width: max-content;
+    background-color: #17191daa;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 6px;
+    border-bottom: 2px solid #48dbfb;
+    border-left: 2px solid #48dbfb;
+    top: 2rem;
+    display: none;
+}
+
+.help-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white;
+    font-family: "helvetica";
+}
+.key {
+    color: black;
+    width: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+    border-radius: 0.2vh;
+    background-color: white;
+    margin: 0 0.5vh;
+    font-size: 1.5vh;
+    font-weight: bold;
+    font-family: "helvetica";
+    
+}
